@@ -1,0 +1,225 @@
+:root {
+  --primary-color: #2c3e50;
+  --secondary-color: #3498db;
+  --background-color: #ecf0f1;
+  --text-color: #2c3e50;
+  --sidebar-width: 250px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: var(--background-color);
+}
+
+.book-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Головна сторінка */
+#main-page {
+  text-align: center;
+  padding: 2rem;
+}
+
+.book-cover {
+  margin: 2rem 0;
+}
+
+.book-cover img {
+  max-width: 100%;
+  height: auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.book-description {
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  font-size: 1.1rem;
+}
+
+/* Кнопки */
+.btn-primary {
+  background-color: var(--secondary-color);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 1.1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #2980b9;
+}
+
+.btn-secondary {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 8px;
+  background-color: var(--secondary-color);
+  color: white;
+  border-radius: 4px;
+  display: none;
+}
+
+/* Сторінка з контентом */
+#content-page {
+  display: flex;
+  gap: 20px;
+  min-height: 100vh;
+}
+
+/* Сайдбар */
+.sidebar {
+  width: var(--sidebar-width);
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h2 {
+  margin-bottom: 1rem;
+}
+
+.sidebar ul {
+  list-style: none;
+}
+
+.sidebar li {
+  margin-bottom: 0.5rem;
+}
+
+.sidebar a {
+  color: var(--text-color);
+  text-decoration: none;
+  display: block;
+  padding: 8px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+  background-color: var(--background-color);
+  color: var(--secondary-color);
+}
+
+/* Посилання на головну */
+.sidebar .home-link {
+  margin-bottom: 1rem;
+  padding: 12px;
+  background-color: var(--background-color);
+  color: var(--primary-color);
+  font-weight: bold;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.sidebar .home-link:hover {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+/* Основний контент */
+.content {
+  flex: 1;
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.content h2 {
+  margin-bottom: 1.5rem;
+}
+
+.content p {
+  margin-bottom: 1rem;
+}
+
+/* Утиліти */
+.hidden {
+  display: none !important;
+}
+
+.active {
+  display: block;
+}
+
+/* Overlay для мобільного меню */
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.sidebar-overlay.active {
+  display: block;
+}
+
+/* Адаптивний дизайн */
+@media (max-width: 768px) {
+  .book-container {
+    padding: 10px;
+  }
+
+  #content-page {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    position: fixed;
+    left: -100%;
+    top: 0;
+    height: 100vh;
+    transition: left 0.3s ease;
+    z-index: 1000;
+  }
+
+  .sidebar.active {
+    left: 0;
+  }
+
+  .btn-secondary {
+    display: block;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1001;
+  }
+
+  .content {
+    margin-top: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .book-cover img {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .content {
+    padding: 15px;
+  }
+}
