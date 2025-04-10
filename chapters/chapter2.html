@@ -14,14 +14,7 @@
         
         <aside class="sidebar">
           <h2>Зміст</h2>
-          <nav>
-            <ul>
-              <li><a href="../index.html" class="home-link">← На головну</a></li>
-              <li><a href="chapter1.html">Розділ 1: Вступ</a></li>
-              <li><a href="chapter2.html" class="active">Розділ 2: Основні поняття</a></li>
-              <li><a href="chapter3.html">Розділ 3: Практичне застосування</a></li>
-            </ul>
-          </nav>
+          <div id="menu-placeholder"></div>
         </aside>
 
         <main class="content">
@@ -40,6 +33,16 @@
         </main>
       </section>
     </div>
+    <script>
+      fetch("menu.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("menu-placeholder").innerHTML = data;
+          // Додаємо активний клас для поточної сторінки
+          const currentPage = document.querySelector('a[href="chapter2.html"]');
+          if (currentPage) currentPage.classList.add('active');
+        });
+    </script>
     <script type="module" src="../js/chapter.js"></script>
   </body>
 </html>
